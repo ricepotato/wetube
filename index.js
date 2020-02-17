@@ -6,4 +6,17 @@ function handlerListening() {
   console.log(`Listening on : http://localhost:${PORT}`);
 }
 
+function handleHome(req, res) {
+  console.log(req);
+  res.send("hello from home.");
+}
+
+function handleProfile(req, res) {
+  res.send("you are in profile");
+}
+
+app.get("/", handleHome);
+
+app.get("/profile", handleProfile);
+
 app.listen(PORT, handlerListening);
