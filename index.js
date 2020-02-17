@@ -7,7 +7,7 @@ const handlerListening = () => {
 };
 
 const handleHome = (req, res) => {
-  console.log(req);
+  //console.log(req);
   res.send("hello from home.");
 };
 
@@ -15,7 +15,18 @@ const handleProfile = (req, res) => {
   res.send("you are in profile");
 };
 
+const betweenHome = (req, res, next) => {
+  console.log("I'm between");
+  next();
+};
+
+// add midware globally
+app.use(betweenHome);
+
 app.get("/", handleHome);
+
+// add midware
+// app.get("/", betweenHome, handleHome);
 
 app.get("/profile", handleProfile);
 
