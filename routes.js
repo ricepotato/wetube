@@ -37,7 +37,7 @@ const routes = {
   search: SEARCH,
   videos: VIDEOS,
   upload: UPLOAD,
-  videoDetails: id => {
+  videoDetail: id => {
     if (id) {
       return `/videos/${id}`;
     } else {
