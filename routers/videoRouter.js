@@ -5,7 +5,8 @@ import {
   getUpload,
   postUpload,
   getEditVideo,
-  postEditVideo
+  postEditVideo,
+  deleteVideo
 } from "../controllers/videoController";
 import { uploadVideo } from "../middlewares";
 
@@ -23,6 +24,6 @@ videoRouter.get(routes.videoDetail(), videoDetail);
 // Edit Video
 videoRouter.get(routes.editVideo(), getEditVideo);
 videoRouter.post(routes.editVideo(), postEditVideo);
-videoRouter.get(routes.deleteVideo, (req, res) => res.send("Delete Video"));
+videoRouter.get(routes.deleteVideo(), deleteVideo);
 
 export default videoRouter;
