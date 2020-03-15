@@ -1,5 +1,7 @@
 extends layouts/main.pug
 
 block content
-    .videos
-        h1 userDetail
+    .user-profile
+        .user-profile__header
+            img.avatar(src=loggedUser.avatarUrl)
+            h4.profile__username=loggedUser.name
