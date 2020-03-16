@@ -102,7 +102,7 @@ export const logout = (req, res) => {
 };
 
 export const getMe = (req, res) => {
-  res.render("userDetail", { pageTitle: "User Detail" });
+  res.render("userDetail", { pageTitle: "User Detail", user: req.user });
 };
 
 export const editProfile = (req, res) =>
