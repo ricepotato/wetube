@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "Cloning Youtube with Vanilla and NodeJS",
   "scripts": {
-    "dev:server": "nodemon --exec babel-node init.js --delay 2 --ignore '.scss' --ignore 'static' ",
-    "dev:assets": "set WEBPACK_ENV=development && webpack -w",
-    "build:assets": "set WEBPACK_ENV=production && webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:server": "nodemon --exec babel-node src/init.js --delay 2 --ignore '.scss' --ignore 'static' ",
+    "dev:assets": "cd src && set WEBPACK_ENV=development webpack -w",
+    "build:assets": "cd src && set WEBPACK_ENV=production webpack",
+    "build:server": "babel src --out-dir build",
+    "copyAll": "xcopy .\\src\\static .\\build\\static\\ /s /y && xcopy .\\src\\views .\\build\\views\\ /s /y",
+    "build": "npm run build:server && npm run build:assets && npm run copyAll",
+    "prebuild": "rd /s /q build",
+    "start": "node build/init.js"
   },
   "author": "ricepotato40@gmail.com",
   "license": "ISC",
@@ -44,6 +48,7 @@
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.10.0",
